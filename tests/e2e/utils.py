@@ -177,17 +177,14 @@ class SeleniumTestCase(DockerTestCase, StaticLiveServerTestCase):
         try:
             opts = webdriver.ChromeOptions()
             opts.add_argument("--disable-search-engine-choice-screen")
-            opts.accept_insecure_certs = True
             return webdriver.Chrome(options=opts)
         except WebDriverException:
             pass
         while count < RETRIES:
             try:
-                opts = webdriver.ChromeOptions()
-                opts.accept_insecure_certs = True
                 driver = webdriver.Remote(
                     command_executor="http://localhost:4444/wd/hub",
-                    options=opts,
+                    options=webdriver.ChromeOptions(),
                 )
                 driver.maximize_window()
                 return driver
