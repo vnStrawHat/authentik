@@ -3,6 +3,7 @@ import {
     CSRFMiddleware,
     EventMiddleware,
     LoggingMiddleware,
+    ForbiddenHandlerMiddleware,
 } from "@goauthentik/common/api/middleware";
 import { EVENT_LOCALE_REQUEST, VERSION } from "@goauthentik/common/constants";
 import { globalAK } from "@goauthentik/common/global";
@@ -81,6 +82,7 @@ export const DEFAULT_CONFIG = new Configuration({
         new CSRFMiddleware(),
         new EventMiddleware(),
         new LoggingMiddleware(globalAK().brand),
+        new ForbiddenHandlerMiddleware(),
     ],
 });
 
