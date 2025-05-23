@@ -26,7 +26,7 @@ const patternflyPath = resolvePackage("@patternfly/patternfly", import.meta);
  */
 const BASE_ESBUILD_OPTIONS = {
     entryNames: `[dir]/[name]-${readBuildIdentifier()}`,
-    chunkNames: "[dir]/chunks/[name]-[hash]",
+    chunkNames: "[dir]/chunks/[hash]",
     assetNames: "assets/[dir]/[name]-[hash]",
     outdir: DistDirectory,
     bundle: true,
